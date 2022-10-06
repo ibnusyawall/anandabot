@@ -1,3 +1,4 @@
+require('./update')
 process.on('uncaughtException', console.error)
 
 const qrcode = require('qrcode-terminal')
@@ -65,6 +66,7 @@ async function start(session, gclient, gconn) {
         lastDisconnect,
         isNewLogin
     }) => {
+        require('./update')
         if (qr) {
             console.log('[*] QR DATA URI:', qr)
             qrcode.generate(qr)
@@ -84,6 +86,10 @@ async function start(session, gclient, gconn) {
         if (isNewLogin) {
             console.log('[!] LOGIN SUCCESS, WAITING OPPENED CONNECTION ...')
         }
+    })
+
+    conn.on('messages.upsert', m => {
+        require('./update')
     })
 
     ws.on('CB:success', () => {
