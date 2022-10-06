@@ -11,7 +11,7 @@ npm i -g typescript
 npm i -g yarn
 echo "ts and yarn successfuly installed"
 echo "try to install baileys module ..."
-git clone https://github.com/adiwajshing/Baileys && cd Baileys && yarn install && cd ..
+git clone https://github.com/adiwajshing/Baileys && cd Baileys && yarn install && tsc && cd ..
 echo "try to installing modules ..."
 yarn install
 echo "setup done!"
